@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AccountsUIWrapper from "../accountsUIWrapper/index.jsx";
+import AccountsUIWrapper from "./accountsUIWrapper";
 
 export default Header = ({ content }) => (
   <Header>
