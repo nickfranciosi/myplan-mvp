@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-
+import '../imports/startup/accounts-config.js';
 // Layouts
 import DefaultLayout from '../imports/ui/layouts/defaultLayout';
 
 // Pages
-import { Home } from '../imports/ui/pages/home';
+import Home from '../imports/ui/pages/home';
 import { SchoolDetail } from '../imports/ui/pages/schoolDetail';
 import { PlanDetail } from '../imports/ui/pages/planDetail';
 import { PlanCreate } from '../imports/ui/pages/planCreate';
