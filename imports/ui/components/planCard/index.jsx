@@ -38,10 +38,12 @@ const PlanCard = ({
 
 
 const CardWrapper = styled.div`
-  width: 90%;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  width: 100%;
   border: 1px solid #E0E0E2;
   border-radius: 2px;
   max-width: 369px;
+  margin: 0 auto;
 `;
 
 const ImageWrapper = styled.div`
@@ -58,7 +60,6 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: bold; 
   font-size: 22px;
   color: #111111;
@@ -67,7 +68,6 @@ const Title = styled.h2`
 `
 
 const StudentDetails = styled.p`
- font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif; 
   font-size: 14px;
   color: #99A9B2;
 `
@@ -79,15 +79,12 @@ const StatsContainer = styled.div`
 
 const Stat = styled.div`
   flex: 1;
-    /* 4: */
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue";
   font-weight: bold;
   font-size: 14px;
   color: ${props => props.color || '#111111'};
 `;
 
 const Description = styled.p`
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue";
   font-size: 12px;
   font-weight: normal;
   color: #626369;
@@ -102,7 +99,7 @@ PlanCard.propTypes = {
   }),
   planName: PropTypes.string,
   media: PropTypes.string,
-  amountRaised: PropTypes.number,
+  amountRaised: PropTypes.string,
   daysRemaining: PropTypes.number,
   supporterCount: PropTypes.number,
 };

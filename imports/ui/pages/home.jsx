@@ -1,44 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 import PlanCard from '../components/planCard/index';
+import { fakePlans } from '../../fakeData';
 
 export const Home = () => (
-  <div>
-    <h2>Home page</h2>
-    <PlanCard
-      student="Jane Doe"
-      school={{
-        name: "Road Meadows Middle School",
-        link: "/school/road-meadows-middle-school",
-      }}
-      planName="Geography Chocolate Company"
-      media="http://lorempixel.com/400/200/"
-      amountRaised="$300"
-      daysRemaining={10}
-      supporterCount={22}
-    />
-    <PlanCard
-      student="Jane Doe"
-      school={{
-        name: "Road Meadows Middle School",
-        link: "/school/road-meadows-middle-school",
-      }}
-      planName="Geography Chocolate Company"
-      media="http://lorempixel.com/400/200/"
-      amountRaised="$300"
-      daysRemaining={10}
-      supporterCount={22}
-    />
-    <PlanCard
-      student="Jane Doe"
-      school={{
-        name: "Road Meadows Middle School",
-        link: "/school/road-meadows-middle-school",
-      }}
-      planName="Geography Chocolate Company"
-      media="http://lorempixel.com/400/200/"
-      amountRaised="$300"
-      daysRemaining={10}
-      supporterCount={22}
-    />
-  </div>
+  <CardList>
+    {fakePlans.map(plan => {
+      return(
+        <CardListItem key={plan._id}>
+          <PlanCard  {...plan}/>
+        </CardListItem>
+      );
+    })}
+  </CardList>
 );
+
+const CardList = styled.div`
+  margin: 0 auto;
+`;
+
+const CardListItem = styled.div`
+  margin-bottom: 40px;
+`;

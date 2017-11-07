@@ -9,6 +9,7 @@ import { Home } from '../imports/ui/pages/home';
 import { SchoolDetail } from '../imports/ui/pages/schoolDetail';
 import { PlanDetail } from '../imports/ui/pages/planDetail';
 import { PlanCreate } from '../imports/ui/pages/planCreate';
+import { Donate } from '../imports/ui/pages/donate';
 
 
 FlowRouter.route('/', {
@@ -39,6 +40,14 @@ FlowRouter.route('/plan/:planName', {
   action(params) {
     mount(DefaultLayout, {
       content: (<PlanDetail plan={params.planName} />),
+    })
+  }
+});
+
+FlowRouter.route('/donate/:planName', {
+  action(params) {
+    mount(DefaultLayout, {
+      content: (<Donate plan={params.planName} />),
     })
   }
 });

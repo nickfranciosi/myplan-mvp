@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/header/index.jsx';
 
 export default DefaultLayout = ({ content }) => (
   <div className="default-layout">
-    <h2>myPlan</h2>
+    <Header />
     {content}
   </div>
 );
