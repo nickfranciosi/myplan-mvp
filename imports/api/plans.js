@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
- 
+
 export const Plans = new Mongo.Collection('plans');
 
 if (Meteor.isServer) {
@@ -18,11 +18,13 @@ Meteor.methods({
     if (! Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
-   
+   console.log({plan});
     Plans.insert({
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username,
+      school: {
+        name: "Test School",
+        link: "/school/test-school",
+      },
+      schoolId: Meteor.userId(),
       ...plan,
     });
   },

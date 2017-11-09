@@ -6,10 +6,10 @@ import DefaultLayout from '../imports/ui/layouts/defaultLayout';
 
 // Pages
 import Home from '../imports/ui/pages/home';
-import { SchoolDetail } from '../imports/ui/pages/schoolDetail';
-import { PlanDetail } from '../imports/ui/pages/planDetail';
+import SchoolDetail from '../imports/ui/pages/schoolDetail';
+import PlanDetail from '../imports/ui/pages/planDetail';
 import { PlanCreate } from '../imports/ui/pages/planCreate';
-import { Donate } from '../imports/ui/pages/donate';
+import Donate from '../imports/ui/pages/donate';
 
 
 FlowRouter.route('/', {
@@ -20,10 +20,10 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/school/:schoolName', {
+FlowRouter.route('/school/:schoolId', {
   action(params) {
     mount(DefaultLayout, {
-      content: (<SchoolDetail school={params.schoolName} />),
+      content: (<SchoolDetail schoolId={params.schoolId} />),
     })
   }
 });
@@ -36,18 +36,18 @@ FlowRouter.route('/plan/create', {
   }
 });
 
-FlowRouter.route('/plan/:planName', {
+FlowRouter.route('/plan/:planId', {
   action(params) {
     mount(DefaultLayout, {
-      content: (<PlanDetail plan={params.planName} />),
+      content: (<PlanDetail planId={params.planId} />),
     })
   }
 });
 
-FlowRouter.route('/donate/:planName', {
+FlowRouter.route('/plan/:planId/donate/', {
   action(params) {
     mount(DefaultLayout, {
-      content: (<Donate plan={params.planName} />),
+      content: (<Donate planId={params.planId} />),
     })
   }
 });

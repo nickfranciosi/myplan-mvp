@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const PlanCard = ({
-  student,
+  _id,
+  studentName,
   school,
   planName,
   media,
@@ -11,12 +12,12 @@ const PlanCard = ({
   daysRemaining,
   supporterCount,
 }) => (
-  <CardWrapper>
+  <CardWrapper href={`/plan/${_id}`}>
     <ImageWrapper src={media} />
     <ContentWrapper>
-      <StudentDetails>
-        {student} - <a href={school.link}>{school.name}</a>
-      </StudentDetails>
+        <StudentDetails>
+          {studentName} - {school && school.name}
+        </StudentDetails>
       <Title>{planName}</Title>
       <StatsContainer>
         <Stat color="#16C98D">
@@ -37,13 +38,15 @@ const PlanCard = ({
 );
 
 
-const CardWrapper = styled.div`
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+const CardWrapper = styled.a`
+  display: block;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
   width: 100%;
   border: 1px solid #E0E0E2;
   border-radius: 2px;
   max-width: 369px;
   margin: 0 auto;
+  text-decoration: none;
 `;
 
 const ImageWrapper = styled.div`
@@ -92,7 +95,7 @@ const Description = styled.p`
 `;
 
 PlanCard.propTypes = {
-  student: PropTypes.string,
+  studentName: PropTypes.string,
   school: PropTypes.shape({
     name: PropTypes.string,
     link: PropTypes.string,

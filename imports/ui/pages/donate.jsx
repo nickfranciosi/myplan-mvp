@@ -1,8 +1,10 @@
 import React from 'react';
 
 
-export const Donate = ({ plan }) => (
+const Donate = ({ planId }) => (
   <div>
-    <h2>donate for {plan}</h2>
+    <h2>donate for {planId}</h2>
   </div>
 );
+
+export default Donate;

@@ -8,18 +8,26 @@ import NoResults from '../components/noResults';
 import { Plans } from '../../api/plans.js'
 import { fakePlans } from '../../fakeData';
 
-const Home = ({ plans = [] }) => (
-  <CardList>
-    {plans.length !== 0 && plans.map(plan => {
-      return(
-        <CardListItem key={plan._id}>
-          <PlanCard  {...plan}/>
-        </CardListItem>
-      );
-    })}
+const Home = ({ plans = [] , currentUser}) => (
+  <div>
+    {currentUser && 
+      <div>
+        <a href="/plan/create">Add new plan</a><br />
+        <a href={`/school/${currentUser._id}`}>See School Page</a>
+      </div>
+    }
+    <CardList>
+      {plans.length !== 0 && plans.map(plan => {
+        return(
+          <CardListItem key={plan._id}>
+            <PlanCard  {...plan}/>
+          </CardListItem>
+        );
+      })}
 
-    {!plans.length && <NoResults />}
-  </CardList>
+      {!plans.length && <NoResults />}
+    </CardList>
+ </div>
 );
 
 const CardList = styled.div`
