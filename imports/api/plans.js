@@ -9,6 +9,17 @@ if (Meteor.isServer) {
   Meteor.publish('plans', function plansPublication() {
     return Plans.find();
   });
+
+  Meteor.publish('plans.currentUser', function() {
+    if (!this.userId) {
+      return this.ready();
+    }
+    return Plans.find({
+      schoolId: this.userId
+    },{ 
+      sort: { createdAt: -1},
+    });
+  });
 }
 
 Meteor.methods({

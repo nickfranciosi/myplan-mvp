@@ -10,6 +10,7 @@ import SchoolDetail from '../imports/ui/pages/schoolDetail';
 import PlanDetail from '../imports/ui/pages/planDetail';
 import { PlanCreate } from '../imports/ui/pages/planCreate';
 import Donate from '../imports/ui/pages/donate';
+import Admin from '../imports/ui/pages/admin';
 
 
 FlowRouter.route('/', {
@@ -48,6 +49,27 @@ FlowRouter.route('/plan/:planId/donate/', {
   action(params) {
     mount(DefaultLayout, {
       content: (<Donate planId={params.planId} />),
+    })
+  }
+});
+
+
+const adminRoutes = FlowRouter.group({
+  prefix: '/admin',
+  triggersEnter: [
+      (context, redirect) => {
+          if (!Meteor.userId()) {
+              console.log("what up redirect");
+              redirect('/');
+          }
+      }
+  ]
+});
+
+adminRoutes.route('/', {
+  action (params) {
+    mount(DefaultLayout, {
+      content: (<Admin />),
     })
   }
 });

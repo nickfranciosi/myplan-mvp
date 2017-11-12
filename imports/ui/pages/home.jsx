@@ -13,7 +13,8 @@ const Home = ({ plans = [] , currentUser}) => (
     {currentUser && 
       <div>
         <a href="/plan/create">Add new plan</a><br />
-        <a href={`/school/${currentUser._id}`}>See School Page</a>
+        <a href={`/school/${currentUser._id}`}>See School Page</a><br />
+        <a href={`/admin`}>See Admin Page</a>
       </div>
     }
     <CardList>
@@ -41,7 +42,7 @@ const CardListItem = styled.div`
 export default withTracker(props => {
   Meteor.subscribe('plans');
   return {
-    plans: Plans.find({}, { sort: { createdAt: -1 } }).fetch(),
+    plans: Plans.find({}, { sort: { createdAt: 1 } }).fetch(),
     currentUser: Meteor.user(),
   };
 })(Home);
