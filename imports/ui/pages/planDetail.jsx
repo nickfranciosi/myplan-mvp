@@ -1,19 +1,26 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import styled from 'styled-components';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Plans } from '../../api/plans.js'
 import PlanCard from '../components/planCard';
 
 
 const PlanDetail = ({ plan = {} }) => (
-  <div>
+  <Section>
     <PlanCard  {...plan}/>
     <h3>Description: </h3>
     <p>{plan.description}</p>
     <a href={`/plan/${plan._id}/donate`}>Support this plan</a>
-  </div>
+  </Section>
 );
+
+const Section = styled.section`
+  font-family: HelveticaNeue;
+  padding: 0 20px;
+  margin-bottom: 26px;
+`;
 
 export default withTracker(props => {
   Meteor.subscribe('plans');

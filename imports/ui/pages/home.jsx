@@ -9,7 +9,7 @@ import { Plans } from '../../api/plans.js'
 import { fakePlans } from '../../fakeData';
 
 const Home = ({ plans = [] , currentUser}) => (
-  <div>
+  <Section>
     {currentUser && 
       <div>
         <a href="/plan/create">Add new plan</a><br />
@@ -28,8 +28,14 @@ const Home = ({ plans = [] , currentUser}) => (
 
       {!plans.length && <NoResults />}
     </CardList>
- </div>
+ </Section>
 );
+
+const Section = styled.section`
+  font-family: HelveticaNeue;
+  padding: 0 20px;
+  margin-bottom: 26px;
+`;
 
 const CardList = styled.div`
   margin: 0 auto;

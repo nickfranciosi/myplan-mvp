@@ -29,13 +29,14 @@ Meteor.methods({
     if (! Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
-   console.log({plan});
+   
     Plans.insert({
       school: {
         name: "Test School",
         link: "/school/test-school",
       },
       schoolId: Meteor.userId(),
+      createdAt: new Date(),
       ...plan,
     });
   },

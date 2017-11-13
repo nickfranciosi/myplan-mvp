@@ -8,7 +8,7 @@ import PlanCard from '../components/planCard';
 
 
 const SchoolDetail = ({ schoolId, plans = [] }) => (
-  <div>
+  <Section>
     <h2>Plans for school: {schoolId}</h2>
     <CardList>
       {plans.length !== 0 && plans.map(plan => {
@@ -21,8 +21,14 @@ const SchoolDetail = ({ schoolId, plans = [] }) => (
 
       {!plans.length && <NoResults />}
     </CardList>
-  </div>
+  </Section>
 );
+
+const Section = styled.section`
+  font-family: HelveticaNeue;
+  padding: 0 20px;
+  margin-bottom: 26px;
+`;
 
 const CardList = styled.div`
 margin: 0 auto;
