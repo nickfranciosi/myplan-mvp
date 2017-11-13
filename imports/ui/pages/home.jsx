@@ -48,7 +48,7 @@ const CardListItem = styled.div`
 export default withTracker(props => {
   Meteor.subscribe('plans');
   return {
-    plans: Plans.find({}, { sort: { createdAt: 1 } }).fetch(),
+    plans: Plans.find({}, { sort: { createdAt: -1 } }).fetch(),
     currentUser: Meteor.user(),
   };
 })(Home);
