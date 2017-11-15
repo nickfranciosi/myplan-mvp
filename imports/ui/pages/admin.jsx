@@ -10,7 +10,7 @@ const Admin = ({ currentUser = {}, plans = [] }) => (
   <Section>
     <HeaderCopy>
       <H1>School Admin</H1>
-      <Link href="#">School name</Link>
+      <Link href={`/school/${currentUser._id}`}>{currentUser.school && currentUser.school.name}</Link>
     </HeaderCopy>
     <Tabs>
       <StyledTabList>
@@ -67,7 +67,8 @@ margin-bottom: 8px;
 const StyledTabList = styled(TabList)`
   display: flex;
   > * {
-		flex: 1;
+    flex: 1;
+  }
 `;
 
 export default withTracker(props => {

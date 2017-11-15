@@ -10,16 +10,6 @@ if (Meteor.isServer) {
     return Plans.find();
   });
 
-  Meteor.publish('plans.currentUser', function() {
-    if (!this.userId) {
-      return this.ready();
-    }
-    return Plans.find({
-      schoolId: this.userId
-    },{ 
-      sort: { createdAt: -1},
-    });
-  });
 }
 
 Meteor.methods({
@@ -29,12 +19,10 @@ Meteor.methods({
     if (! Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
-   
+
+    const currentUser = Meteor.user();
     Plans.insert({
-      school: {
-        name: "Test School",
-        link: "/school/test-school",
-      },
+      school: currentUser.school,
       schoolId: Meteor.userId(),
       createdAt: new Date(),
       ...plan,

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export class PlanCreate extends Component {
+class PlanCreate extends Component {
   constructor(props) {
     super(props);
 
@@ -31,11 +32,12 @@ export class PlanCreate extends Component {
   }
 
   render() {
+    const { currentUser = {} } = this.props;
     return (
       <Section>
         <HeaderCopy>
           <H1>Plan details</H1>
-          <Link href="#">School name</Link>
+          <Link href={`/school/${currentUser._id}`}>{currentUser.school && currentUser.school.name}</Link>
         </HeaderCopy>
         <form onSubmit={this.addPlan}>
           <fieldset>
@@ -89,6 +91,13 @@ export class PlanCreate extends Component {
   }
  
 };
+
+export default withTracker(props => {
+  return {
+    currentUser: Meteor.user(),
+  };
+})(PlanCreate);
+
 
 const Section = styled.section`
   font-family: HelveticaNeue;

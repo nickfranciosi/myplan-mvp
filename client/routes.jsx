@@ -8,8 +8,9 @@ import DefaultLayout from '../imports/ui/layouts/defaultLayout';
 import Home from '../imports/ui/pages/home';
 import SchoolDetail from '../imports/ui/pages/schoolDetail';
 import PlanDetail from '../imports/ui/pages/planDetail';
-import { PlanCreate } from '../imports/ui/pages/planCreate';
+import PlanCreate from '../imports/ui/pages/planCreate';
 import Donate from '../imports/ui/pages/donate';
+import SignUp from '../imports/ui/pages/signUp';
 import Admin from '../imports/ui/pages/admin';
 
 
@@ -17,6 +18,15 @@ FlowRouter.route('/', {
   action() {
     mount(DefaultLayout, {
       content: (<Home />),
+    })
+  }
+});
+
+
+FlowRouter.route('/signup', {
+  action() {
+    mount(DefaultLayout, {
+      content: (<SignUp />),
     })
   }
 });

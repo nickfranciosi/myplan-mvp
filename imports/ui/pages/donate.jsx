@@ -7,7 +7,7 @@ import { Plans } from '../../api/plans.js'
 
 const Donate = ({ plan = {} }) => (
   <Section>
-    <H2>{plan.studentName} - Road Meadows Middle School</H2>
+    <H2>{plan.studentName} - {plan.school && plan.school.name}</H2>
     <H1>{plan.planName}</H1>
     <FormFields>
 
