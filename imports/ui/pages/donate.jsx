@@ -118,7 +118,7 @@ const Amount = styled.div`
   background: #F7F7F7;
   border: 1px solid #E0E0E2;
   padding: 16px 0;
-  width: 111px;
+  width: 110px;
   display: inline-block;
   text-align: center;
   cursor: pointer;
@@ -127,7 +127,7 @@ const Amount = styled.div`
 const AmountHighlighted = Amount.extend`
   background: #16C98D;
   color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid #16C98D;
 `;
 
 const TextInput = styled.input`

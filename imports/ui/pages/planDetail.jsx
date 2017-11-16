@@ -10,7 +10,13 @@ import PlanCard from '../components/planCard';
 const PlanDetail = ({ plan = {} }) => (
   <div>
     <Section>
-      <H2>{plan.studentName} - {plan.school && plan.school.name}</H2>
+      <H2>
+        {plan.studentName}
+        <LinkToSchool href={`/school/${plan.schoolId}`}>
+          {' - '}
+          {plan.school && plan.school.name}
+        </LinkToSchool>
+      </H2>
       <H1>{plan.planName}</H1>
     </Section>
     <Media src={plan.media} />
@@ -51,6 +57,11 @@ const H2 = styled.h2`
   color: #131313;
   font-weight: normal;
   padding: 26px 0 5px;
+`;
+
+const LinkToSchool = styled.a`
+  text-decoration: none;
+  color: #337FB6;
 `;
 
 const H1 = styled.h1`
@@ -104,6 +115,7 @@ const Tab = styled.div`
   color: #626369;
   padding: 0 0 14px;
   border-bottom: ${props => props.border || 'none'};
+  cursor: pointer;
 `;
 
 const PlanDescription = styled.div`
