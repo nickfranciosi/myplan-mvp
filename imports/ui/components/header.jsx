@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import SlideMenu from '../components/slideMenu';
 import AccountsUIWrapper from "./accountsUIWrapper";
 
 export default Header = ({ content }) => (
   <Header>
     <LogoText href="/">myplan</LogoText>
-    <Burger><Patty /><Patty /><Patty /></Burger>
     <AccountsUIWrapper />
+    <SlideMenu />
+    
   </Header>
 );
 

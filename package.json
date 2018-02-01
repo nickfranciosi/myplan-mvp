@@ -10,6 +10,7 @@
     "meteor-node-stubs": "^0.3.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-burger-menu": "^2.2.3",
     "react-dom": "^16.0.0",
     "react-mounter": "^1.2.0",
     "react-tabs": "^2.1.0",

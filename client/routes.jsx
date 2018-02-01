@@ -69,7 +69,6 @@ const adminRoutes = FlowRouter.group({
   triggersEnter: [
       (context, redirect) => {
           if (!Meteor.userId()) {
-              console.log("what up redirect");
               redirect('/');
           }
       }
