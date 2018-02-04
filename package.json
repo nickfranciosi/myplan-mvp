@@ -2,7 +2,8 @@
   "name": "myPlan",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "deploy": "git push heroku master"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
