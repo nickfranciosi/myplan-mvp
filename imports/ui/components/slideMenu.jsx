@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { slide as Menu } from 'react-burger-menu';
@@ -44,27 +45,75 @@ var styles = {
   }
 }
 
-const SlideMenu = ({ currentUser }) => (
-  <Menu right styles={styles}>
-    <a href="/">Home</a>
-    <a href="#">How it works</a>
-    <a href="#">Contact</a>
-    {currentUser ? 
-      <div>
-        <a href={`/school/${currentUser._id}`}>Plans</a><br />
-        <a href={`/admin`}>Admin</a><br />
-        <a onClick={(e) => {
-          e.preventDefault();
-          Meteor.logout();
-        }}>Sign Out</a>
-      </div> 
-    :
-      <div>
-        <a href="#">Sign In</a>
-      </div>
+class SlideMenu extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isOpen: false,
     }
-  </Menu>
-);
+  }
+
+  linkAction(event, route) {
+    event.preventDefault();
+    FlowRouter.go(route);
+    this.setState({
+      isOpen: false,
+    })
+  }
+
+  handleLogOut(e) {
+    e.preventDefault();
+    Meteor.logout();
+    FlowRouter.go("/");
+  }
+
+  render(){
+    const { currentUser } = this.props;
+    return(
+      <Menu right styles={styles} isOpen={this.state.isOpen}>
+        <MenuLink onClick={(e) => this.linkAction(e, "/")}>Home</MenuLink>
+        <MenuLink onClick={(e) => this.linkAction(e, "/how-it-works")}>How it works</MenuLink>
+        <MenuLink onClick={(e) => this.linkAction(e, "/contact")}>Contact</MenuLink>
+        {currentUser ?
+          <UserLinkContainer>
+            <SchoolName>{currentUser.school.name}</SchoolName>
+            <MenuLink onClick={(e) => this.linkAction(e, `/school/${currentUser._id}`)}>Plans</MenuLink>
+            <MenuLink onClick={(e) => this.linkAction(e, "/admin")}>Admin</MenuLink>
+            <MenuLink onClick={this.handleLogOut}>Sign Out</MenuLink>
+          </UserLinkContainer>
+          :
+          <div>
+            <MenuLink onClick={(e) => this.linkAction(e, "/signin")}>Sign In</MenuLink>
+          </div>
+        }
+      </Menu>
+    )
+  }
+}
+
+
+const MenuLink = styled.p`
+  color: #4A4A4A;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 32px;
+`;
+
+const SchoolName = styled.p`
+  font-family: HelveticaNeue;
+  color: #6C6C6C;
+  font-size: 16px;
+  margin-bottom: 32px;
+`;
+
+const UserLinkContainer = styled.div`
+  border-top: 1px solid #CDCDCD;
+  padding-top: 16px;
+`;
+
 
 
 export default withTracker(props => {

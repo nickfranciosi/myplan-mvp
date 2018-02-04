@@ -20,12 +20,6 @@ const Home = ({ plans = [] , currentUser}) => {
         }
       </HeroMasthead>
       <Section>
-        {currentUser && 
-          <div>
-            <a href={`/school/${currentUser._id}`}>My School Page</a><br />
-            <a href={`/admin`}>See Admin Page</a>
-          </div>
-        }
         <CardList>
           {plans.length !== 0 && plans.map(plan => {
             return(

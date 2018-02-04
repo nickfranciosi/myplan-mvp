@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class SignUp extends React.Component {
+class SignIn extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,18 +15,18 @@ class SignUp extends React.Component {
       zip: "",
     };
 
+    this.loginUser = this.loginUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.addUser = this.addUser.bind(this);
   }
 
-  addUser(e) {
+  loginUser(e) {
     e.preventDefault();
-    Meteor.call('users.insert', this.state, (error) => {
-      Meteor.loginWithPassword(this.state.email, this.state.password, (e) => {
-        FlowRouter.go("/admin");
-      });
+    Meteor.loginWithPassword(this.state.email, this.state.password, (e) => {
+      FlowRouter.go("/admin");
     });
   }
+
+
 
   handleChange(e, field) {
     this.setState({
@@ -38,13 +38,11 @@ class SignUp extends React.Component {
    return (
     <Section>
       <HeaderCopy>
-        <H1>Create account</H1>
-        <Detail>Create your myplan account and add your school</Detail>
-        <Detail>Already have an account? <a href="/signin">Sign in</a></Detail>
+        <H1>Sign In</H1>
+        <Detail>Need to add your school? <a href="/signup">Create an account</a></Detail>
       </HeaderCopy>
-      <FormFields onSubmit={this.addUser}>
+       <FormFields onSubmit={this.loginUser}>
         <fieldset style={{ marginBottom: "36px" }}>
-          <Label htmlFor="email">Admin</Label>
           <TextInput
             type="email"
             placeholder="Email address"
@@ -59,54 +57,11 @@ class SignUp extends React.Component {
             onChange={this.handleChange}
             value={this.state.password}
           />
-          <TextInput
-            type="password"
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            onChange={this.handleChange}
-            value={this.state.confirmPassword}
-          />
-        </fieldset>
-        <fieldset>
-          <Label htmlFor="schoolName">School</Label>
-          <TextInput
-            type="text"
-            placeholder="Name"
-            name="schoolName"
-            onChange={this.handleChange}
-            value={this.state.schoolName}
-          />
-          <Spread>
-            <SplitField
-              type="text"
-              placeholder="Street"
-              name="street"
-              onChange={this.handleChange}
-              value={this.state.street}
-            />
-            <Spacer/>
-            <SplitField
-              type="text"
-              placeholder="Zip"
-              name="zip"
-              onChange={this.handleChange}
-              value={this.state.zip}
-            />
-          </Spread>
-  
-          <TextInput
-            type="text"
-            placeholder="City"
-            name="city"
-            onChange={this.handleChange}
-            value={this.state.city}
-          />
         </fieldset>
         <SubmitBtn
           type="submit"
-          value="Create account"
+          value="Sign In"
         />
-  
       </FormFields>
     </Section>
   );
@@ -205,4 +160,4 @@ const SubmitBtn = styled.input`
   cursor: pointer;
 `;
 
-export default SignUp;
+export default SignIn;
